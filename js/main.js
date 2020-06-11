@@ -6,13 +6,21 @@ const profileBio = document.querySelector("#bio");
 const repoList = document.querySelector("#repo-list");
 
 const resultDisplay = document.querySelector("#results");
+const inputSearch = document.querySelector("#input-search")
 const searchBtn = document.querySelector("#input button");
 
-searchBtn.addEventListener("click", getUserProfile);
+searchBtn.addEventListener("click", validate);
 
-function getUserProfile() {  
+function validate() {
+  let regEx = /\S+/g;
+
+  regEx.test(inputSearch.value) ? getUserProfile(inputSearch.value.trim()) : null
   
-  fetch("https://api.github.com/users/ezzep66")
+}
+
+function getUserProfile(userName) {    
+  
+  fetch("https://api.github.com/users/" + userName)
   .then( resp => resp.json())
   .then( data => {
     
@@ -29,7 +37,7 @@ function getUserProfile() {
     profileName.innerText = userData.name;
     profileBio.innerText = userData.bio;   
     
-    getRepos();
+    getRepos(userName);
     showResults();
 
   })
@@ -38,18 +46,10 @@ function getUserProfile() {
 function showResults() {  
   resultDisplay.setAttribute("style", "display:block")
 }
-/*
-<li>
-          <div>shopping-cart</div>  
-          <span>
-            <i class="fas fa-code-branch"></i> 0 
-            <i class="far fa-star"></i> 0
-          </span>
-        </li>
-         */
 
-function getRepos() {
-  fetch("https://api.github.com/users/ezzep66/repos")
+
+function getRepos(userName) {
+  fetch("https://api.github.com/users/"+userName+"/repos")
   .then(resp => resp.json())
   .then(data => {
     for (let repo of data) {
