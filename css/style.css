@@ -2,7 +2,12 @@
   box-sizing: border-box;
 }
 body {
+  background-color: #FFFFFF;
+  color: #22223B;
   font-family: Arial, Helvetica, sans-serif;
+}
+body h2 {
+  text-align: center;
 }
 #profile img {
   width: 100px;
@@ -18,7 +23,6 @@ body {
   align-items: center;
 }
 main {
-  border: 1px solid black;
   width: 95%;
   /* width: 30em; */
   max-width: 30em;
@@ -30,6 +34,9 @@ main {
 #input input[type="text"] {
   width: 100%;
   height: 3em;
+}
+.search {
+  margin: 2em;
 }
 .search button {
   display: block;
@@ -60,8 +67,8 @@ main {
 }
 main {
   border-radius: 5px;  
-  border: 2px solid black;
-  box-shadow: 4px 4px rgba(0, 0, 0, 0.328);
+  border: 2px solid #596475;
+  box-shadow: 4px 4px 10px #596475;
 }
 .far {
   margin-left: 0.5em;
@@ -77,10 +84,11 @@ main {
   .search button {
     display: inline-block;
     padding: 0.1em 0.4em;
+    height: 2em;
   }
   #input input[type="text"] {
     width: 80%;
-    height: auto;
+    height: 2em;
   }
   #repo-list li {
     flex-direction: row;
